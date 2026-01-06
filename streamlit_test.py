@@ -5,7 +5,7 @@ from io import StringIO
 st.set_page_config(page_title="CSV/Excel 表示アプリ（Streamlit版）", layout="wide")
 st.title("CSV/Excel 表示アプリ（Streamlit版）")
 
-uploaded_file = st.file_uploader("CSVまたはExcelファイルを選択", type=["csv", "xlsx", "xls"])
+uploaded_file = st.file_uploader("CSVまたはExcelファイルを選択", type=["csv", "xlsx"])
 
 if uploaded_file:
     header_keywords = ['公報番号']
@@ -43,6 +43,7 @@ if uploaded_file:
                     continue
 
             if df is None:
+                uploaded_file.seek(0)  # ★ ここが重要（先頭に戻す）
                 try:
                     df = pd.read_csv(uploaded_file, dtype=str, on_bad_lines="skip", encoding=enc, engine="python")
                 except Exception as e:
@@ -53,7 +54,8 @@ if uploaded_file:
 
         if df is not None:
             df = df.fillna("")
-            st.dataframe(df, width='content')
+            # st.dataframe(df, width='content')
+            st.dataframe(df, use_container_width=True)
 
     except Exception as ex:
         st.error(f"読み込みエラー: {ex}")
