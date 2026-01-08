@@ -9,8 +9,8 @@ st.title("CSV/Excel 表示アプリ（CSV / .xlsx）")
 # 設定
 HEADER_KEYWORDS = ("公報番号",)  # ヘッダー検出用キーワード
 CSV_ENCODINGS = ("utf-8-sig", "utf-8", "cp932")  # 試す順番
-CSV_SEARCH_ROWS = 50  # CSVの先頭何行までヘッダ探索するか
-XLSX_SEARCH_ROWS = 50  # Excelの先頭何行までヘッダ探索するか
+CSV_SEARCH_ROWS = 30  # CSVの先頭何行までヘッダ探索するか
+XLSX_SEARCH_ROWS = 30  # Excelの先頭何行までヘッダ探索するか
 
 uploaded_file = st.file_uploader("CSV または Excel (.xlsx) を選択", type=["csv", "xlsx"])
 

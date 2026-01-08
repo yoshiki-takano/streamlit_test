@@ -5,7 +5,8 @@ import pandas as pd
 from io import StringIO
 from openpyxl import load_workbook
 
-st.set_page_config(page_title="CSV/Excel 表示アプリ（ヘッダー手動調整対応）", layout="wide")
+st.set_page_config(page_title="CSV/Excel 表示アプリ（ヘッダー手動調整対応）", layout="wide",
+                   initial_sidebar_state="collapsed")
 st.title("CSV/Excel 表示アプリ（CSV / .xlsx）")
 
 # ===== 設定（デフォルト） =====
